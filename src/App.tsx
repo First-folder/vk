@@ -28,7 +28,10 @@ class App extends React.Component{
   }
   render(){
     return(
-      <div>My type script first</div>
+      <div>
+        <HeaderContainer/>>
+
+      </div>
     )
   }
 }
