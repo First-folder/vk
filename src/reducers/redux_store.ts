@@ -1,9 +1,17 @@
 import { combineReducers, createStore, applyMiddleware, compose } from "redux";
 import thunkMiddleware from"redux-thunk";
 import headerReducer from "./header_reduser";
+import { AuthReducer } from "./auth_user";
+import { profileR } from "./profile_reducer";
+import photosReducer from "./photos_reduser";
+import { friendsReducer } from "./friends_reducer";
 
 let rootReducer = combineReducers({
-    headerR:headerReducer
+    headerR:headerReducer,
+    authR:AuthReducer,
+    profileR:profileR,
+    photosR:photosReducer,
+    friendsR:friendsReducer
 })
 type RootReducerType = typeof rootReducer;
 export type AppStateType = ReturnType<RootReducerType> 
