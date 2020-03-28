@@ -7,6 +7,7 @@ import s from './App.module.css'
 import { Route } from 'react-router-dom';
 import ProfileContaner from './components/ProfileContaner/ProfileContaner';
 import NewsContaner from './components/News/NewsContaner';
+import PhotoContainer from './components/Photo/PhotoContainer';
 
 
 
@@ -22,6 +23,7 @@ class App extends React.Component{
             <Route path={"/"} component={NavBar}/> 
             <Route path ={"/profile/:userid?"} render = {()=><ProfileContaner/>}/>
             <Route path ={"/news"} render = {()=><NewsContaner/>}/>
+            <Route path ={"/photos"} render ={()=><PhotoContainer/>}/>
         </div>
 
       </div>

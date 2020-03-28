@@ -34,7 +34,8 @@ export const propf_count_audios = (state:AppStateType)=>{return state.profileR.c
 //PHOTOS
 
 export const photos_wall_profile = (state:AppStateType)=>{return state.photosR.wall.items}
-
+export const photos_profile      = (state:AppStateType)=>{return state.photosR.profile.items}
+export const photos_albums      = (state:AppStateType)=>{return state.photosR.albums.items}
 
 
 //FRIENDS

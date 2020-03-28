@@ -106,7 +106,7 @@ export let getProfileUserInfoThunk = ()=> async (dispatch:any)=>{
 
 }
 export let getProfilePhotosUser= (id_user :number) => async(dispatch:any)=>{
-    let result = await ProfileApi.getUserPhotos(id_user);
+    let result = await ProfileApi.getWallPhotos(id_user);
     console.log("out info getProfilePhotosUser");
     console.log(result);
 }
