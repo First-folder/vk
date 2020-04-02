@@ -7,7 +7,7 @@ const dataApplication = {
     id_application:7356819,
     client_secret:'jOEvi0ZPokMhzrRjHQRa',
     service_key:'551625d2551625d2551625d2d45566644155516551625d20b7d4a8bc6a9f3eaf4f8c12b',
-   
+    token :'access_token=df5a86b4ca0073a5ac6866db257c182ab161e22f40f777661fe344e97a09d524876418b25926bfc8e0280'
 
 }
 
@@ -41,6 +41,9 @@ let getURL=(method:string,fields:Array<Params_req>)=>{
 
     return baseUrl + method + params + token +'&v=5.103';
 }
+// let postUrlSaveFile = (method:string,url:string,params) =>{
+    
+// }
 export const AuthApi ={
     getUserData(login:string,passw:string){
         const  user_id=571537978;
@@ -102,16 +105,37 @@ export const ProfileApi = {
             console.log(data)
         })
     },
-    saveFile(file:any){
+    requestUrlSaveFile(){
        console.log(getURL('photos.getWallUploadServer?',[{key:'album_id',value:271216556}]));
         return Axios.jsonp(getURL('photos.getWallUploadServer?',[{key:'album_id',value:271216556}])).then(data=>{
-            console.log('data.response');
-            console.log(data);
-            return data
+            console.log('URL SAVE FILE');
+            console.log(data.response.upload_url);            
+            return data.response
         })
+    },
+    saveFile(url:string , file:any){
+        let formData = new FormData();
+        formData.append('file1',file);
+        console.log("formData");
+        console.log(formData.getAll);
+        console.log("saveFile1");
+        console.log(url+'photos.save?'+dataApplication.token+'&'+formData+'&v=5.103');
+        // return axios.post(url+'photos.save?'+dataApplication.token+'&v=5.103',formData,{ headers: {
+        //              'content-type': 'multipart/form-data'
+        //          }}).then(data=>{
+        //             console.log("saveFile2");
+        //             console.log(data);
+        //          })
+        
+        Axios.jsonp(url,data
+                     ).then(data=>{
+            console.log("saveFile2");
+            console.log(data);
+       });
     }
+
 }
-export const FriendsApi={
+export const FriendsApi={    
     getFriedns(id_user:number){
         return Axios.jsonp(getURL('friends.get?',[{key:"count",value:"20"},{key:"fields",value:"nickname, domain, sex, bdate, city, country, timezone, photo_50, photo_100, photo_200_orig, has_mobile, contacts, education, online, relation, last_seen, status, can_write_private_message, can_see_all_posts, can_post, universities"}])).then(data=>{
             console.log(data.response);

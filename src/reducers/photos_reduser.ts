@@ -104,8 +104,9 @@ export let photoGetAlbumsThunk = (id_user:number):ThunkType => async (dispatch) 
 //error result 
 }
 export let photoSetPhotoFileThunk = (file:any):ThunkType => async (dispatch)=>{
-    let result = await ProfileApi.saveFile(file);
-    console.log(result);
+    let result = await ProfileApi.requestUrlSaveFile();
+    console.log(result.upload_url);
+    let result_save = await ProfileApi.saveFile(result.upload_url,file);
 
 }
 export default photosReducer; 
