@@ -103,6 +103,11 @@ export let photoGetAlbumsThunk = (id_user:number):ThunkType => async (dispatch) 
     let result  = await ProfileApi.getAlbums(id_user)
 //error result 
 }
+export let photosGetPhotosAllThunk = (id_user:number):ThunkType => async (dispatch)=>{
+    let result = await ProfileApi.getAllPhotos(id_user);
+    dispatch(photosSetPhotosUserProfileAC(result));
+    console.log(result);
+}
 export let photoSetPhotoFileThunk = (file:any):ThunkType => async (dispatch)=>{
     let result = await ProfileApi.requestUrlSaveFile();
     console.log(result.upload_url);

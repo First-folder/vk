@@ -8,6 +8,7 @@ import { Route } from 'react-router-dom';
 import ProfileContaner from './components/ProfileContaner/ProfileContaner';
 import NewsContaner from './components/News/NewsContaner';
 import PhotoContainer from './components/Photo/PhotoContainer';
+import MusicContainer from './components/music/MusicContainer';
 
 
 
@@ -22,8 +23,9 @@ class App extends React.Component{
          <div className={s.content}>
             <Route path={"/"} component={NavBar}/> 
             <Route path ={"/profile/:userid?"} render = {()=><ProfileContaner/>}/>
-            <Route path ={"/news"} render = {()=><NewsContaner/>}/>
-            <Route path ={"/photos"} render ={()=><PhotoContainer/>}/>
+            <Route path ={"/news"}       render = {()=><NewsContaner/>}/>
+            <Route path ={"/photos"}     render = {()=><PhotoContainer/>}/>
+            <Route path = {"/audios"}    render = {()=><MusicContainer/>}/>
         </div>
 
       </div>

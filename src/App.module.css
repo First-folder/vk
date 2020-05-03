@@ -1,0 +1,12 @@
+body {
+  background-color: #edeef0;
+}
+.wrapper_component {
+  width: 100%;
+  background-color: #edeef0;
+}
+.content {
+  width: 1200px;
+  margin: auto;
+  display: flex;
+}

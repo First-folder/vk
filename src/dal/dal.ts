@@ -91,10 +91,18 @@ export const ProfileApi = {
     getProfilePhotos(id_user:number){
         console.log(getURL('photos.get?',[{key:'owner_id',value:-id_user},{key:'extended',value:1}]));
             return Axios.jsonp(getURL('photos.get?',[{key:'owner_id',value:id_user},{key:'extended',value:1},{key:'album_id',value:'profile'},{key:'count',value:7}])).then(data=>{
+                console.log("SAVED PHOTOS") ;
                 console.log(data) ;
                 return data.response
             })
 
+    },
+    getAllPhotos(id_user:number){
+        console.log("CREATE STRING NEW URL PHOTOSALL")
+        console.log(getURL('photos.getAll?',[{key:'owner_id',value:id_user},{key:'extended',value:1},{key:'need_hidden',value:1}]))
+        return Axios.jsonp(getURL('photos.getAll?',[{key:'owner_id',value:id_user},{key:'extended',value:1},{key:'need_hidden',value:1}])).then(data =>{
+            return data.response
+        })
     },
     
     getAlbums(id_user:number){
@@ -119,7 +127,8 @@ export const ProfileApi = {
         console.log("formData");
         console.log(formData.getAll);
         console.log("saveFile1");
-        console.log(url+'photos.save?'+dataApplication.token+'&'+formData+'&v=5.103');
+        console.log(url);
+        // console.log(url+'photos.save?'+dataApplication.token+'&'+formData+'&v=5.103');
         // return axios.post(url+'photos.save?'+dataApplication.token+'&v=5.103',formData,{ headers: {
         //              'content-type': 'multipart/form-data'
         //          }}).then(data=>{
@@ -127,18 +136,40 @@ export const ProfileApi = {
         //             console.log(data);
         //          })
         
-        Axios.jsonp(url,data
-                     ).then(data=>{
-            console.log("saveFile2");
-            console.log(data);
-       });
-    }
+    //     axios.post(url,formData
+    //                  ).then(data=>{
+    //         console.log("saveFile2");
+    //         console.log(data);
+    //    });
+       axios({
+        url:url,
+        method:'post',
+        headers: {'content-type': 'multipart/form-data',
+        'Origin':'https://vk.com'},
+        data:formData,
+        withCredentials: true
+    }).then(data=>{
+                    console.log("saveFile2");
+                    console.log(data);
+                 })
+      
 
+},
 }
-export const FriendsApi={    
+
+export const FriendsApi = {    
     getFriedns(id_user:number){
         return Axios.jsonp(getURL('friends.get?',[{key:"count",value:"20"},{key:"fields",value:"nickname, domain, sex, bdate, city, country, timezone, photo_50, photo_100, photo_200_orig, has_mobile, contacts, education, online, relation, last_seen, status, can_write_private_message, can_see_all_posts, can_post, universities"}])).then(data=>{
             console.log(data.response);
+            return data.response
+        })
+    }
+}
+
+export const MusicApi = {
+    getMusic(id_user:number){
+        console.log(getURL('audio.get?',[{key:"owner_id",value:id_user}]))
+        return Axios.jsonp(getURL('audio.get?',[{key:"owner_id",value:id_user}])).then(data=>{
             return data.response
         })
     }
