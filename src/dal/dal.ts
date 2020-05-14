@@ -174,6 +174,25 @@ export const MusicApi = {
         })
     }
 }
+export const NewsApi = {
+    getNewsUser(id_user:number){
+        return Axios.jsonp(getURL('newsfeed.get?',[{key:"count",value:25}])).then(data=>{
+            return data.response
+        })
+    }
+}
+
+export let LikesApi = {
+    LikesAdd(type:string,owner_id:number,item_id:number){
+        return Axios.jsonp(getURL('likes.add?',[{key:"type",value:"post"},{key:"owner_id",value:owner_id},{key:"item_id",value:item_id}])).then(data=>{
+           console.log(data);
+            return data.response
+        })
+    },
+    LikesDelete(){
+
+    }
+}
 // bdate,photo_200,music,video,nickname,military,personal,schools,sex,site,status,verified,books,career,contacts,country
 //https://api.vk.com/method/users.get?user_ids=571537978&fields=bdate&access_token=fad8ff1ae762e37461bf56c369c0e17c7424b321a462428491b97361836a514530b2a7cb778d7c8cfc756&v=5.103
 //https://api.vk.com/method/users.get?user_ids=571537978&fields=bdate&access_token=533bacf01e11f55b536a565b57531ac114461ae8736d6506a3&v=5.103

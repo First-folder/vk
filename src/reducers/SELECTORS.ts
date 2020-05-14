@@ -42,6 +42,11 @@ export const photos_albums      = (state:AppStateType)=>{return state.photosR.al
 export const friends_info_friends = (state:AppStateType)=>{return state.friendsR.friends}
 
 
+//NEWS
+export const news_profiles   = (state:AppStateType)=>{return state.newsR.profiles}
+export const news_groups     = (state:AppStateType)=>{return state.newsR.groups}
+export const news_items      = (state:AppStateType)=>{return state.newsR.items}
+
 
 
 

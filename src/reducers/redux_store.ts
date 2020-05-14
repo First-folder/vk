@@ -5,13 +5,15 @@ import { AuthReducer } from "./auth_user";
 import { profileR } from "./profile_reducer";
 import photosReducer from "./photos_reduser";
 import { friendsReducer } from "./friends_reducer";
+import { newsReducer } from "./news_reducer";
 
 let rootReducer = combineReducers({
     headerR:headerReducer,
     authR:AuthReducer,
     profileR:profileR,
     photosR:photosReducer,
-    friendsR:friendsReducer
+    friendsR:friendsReducer,
+    newsR:newsReducer
 })
 type RootReducerType = typeof rootReducer;
 export type AppStateType = ReturnType<RootReducerType> 
